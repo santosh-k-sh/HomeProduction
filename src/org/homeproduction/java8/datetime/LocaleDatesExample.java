@@ -15,6 +15,10 @@ public class LocaleDatesExample {
     }
 
     public static LocalDate addDate(Date date, long noOfDays) {
+        /* java.util.Date instance has no concept of time-zone.
+        * An 'Instant' also does not contain any information about the time-zone.
+        * Thus, to convert from an Instant to a local date, it is necessary to specify a time-zone.
+        * ZoneId.systemDefault() gives the default time-zone. Use the atZone() method to apply the time-zone*/
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return localDate.plusDays(noOfDays);
     }
